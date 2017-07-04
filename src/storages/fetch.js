@@ -61,7 +61,6 @@ fetchStorage.sync = function (method, model, options) {
     }
 
     fetchStorage.send(url, request, function (error, json) {
-        console.log(error, json, options);
         if (error) {
             options.error(error);
         } else {
