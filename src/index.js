@@ -17,23 +17,6 @@ RNBackbone.Model = Backbone.Model.extend({
     sync: function () {
         return RNBackbone.sync.apply(this, arguments);
     },
-    save: function () {
-        var args = _.toArray(arguments)
-        var attrs = _.isFunction(arguments[0]) ? this.attributes : arguments[0];
-        var options = !arguments[1] || _.isFunction(arguments[1]) ? {} : arguments[1];
-
-        return new Promise((resolve, reject) => {
-            options.success = function (model, res, options) {
-                resolve(res)
-            };
-            options.error = function (model, res, options) {
-                reject(res)
-            };
-            var deferred = RNBackbone.Model.prototype.save.apply(this, [attrs, options])
-            console.log(deferred)
-            return deferred
-        })
-    },
 });
 
 RNBackbone.Collection = Backbone.Collection.extend({
